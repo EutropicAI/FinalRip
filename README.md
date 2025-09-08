@@ -2,10 +2,10 @@
 
 a distributed video processing tool, based on FFmpeg and VapourSynth
 
-[![CI-test](https://github.com/TensoRaws/FinalRip/actions/workflows/CI-test.yml/badge.svg)](https://github.com/TensoRaws/FinalRip/actions/workflows/CI-test.yml)
-[![golangci-lint](https://github.com/TensoRaws/FinalRip/actions/workflows/golangci-lint.yml/badge.svg)](https://github.com/TensoRaws/FinalRip/actions/workflows/golangci-lint.yml)
-[![Docker Build CI](https://github.com/TensoRaws/FinalRip/actions/workflows/CI-docker.yml/badge.svg)](https://github.com/TensoRaws/FinalRip/actions/workflows/CI-docker.yml)
-[![Release](https://github.com/TensoRaws/FinalRip/actions/workflows/Release.yml/badge.svg)](https://github.com/TensoRaws/FinalRip/actions/workflows/Release.yml)
+[![CI-test](https://github.com/EutropicAI/FinalRip/actions/workflows/CI-test.yml/badge.svg)](https://github.com/EutropicAI/FinalRip/actions/workflows/CI-test.yml)
+[![golangci-lint](https://github.com/EutropicAI/FinalRip/actions/workflows/golangci-lint.yml/badge.svg)](https://github.com/EutropicAI/FinalRip/actions/workflows/golangci-lint.yml)
+[![Docker Build CI](https://github.com/EutropicAI/FinalRip/actions/workflows/CI-docker.yml/badge.svg)](https://github.com/EutropicAI/FinalRip/actions/workflows/CI-docker.yml)
+[![Release](https://github.com/EutropicAI/FinalRip/actions/workflows/Release.yml/badge.svg)](https://github.com/EutropicAI/FinalRip/actions/workflows/Release.yml)
 
 ### Impl
 
@@ -19,7 +19,7 @@ _We cut the original video into multiple clips, and then process each clip in pa
 
 ### Quick Deployment
 
-edit [Line 19](https://github.com/TensoRaws/FinalRip/blob/main/deploy/docker-compose/lite/docker-compose.yml#L19) to your LAN IP address
+edit [Line 19](https://github.com/EutropicAI/FinalRip/blob/main/deploy/docker-compose/lite/docker-compose.yml#L19) to your LAN IP address
 
 ```bash
 docker-compose -f deploy/docker-compose/lite/docker-compose.yml up -d
@@ -31,7 +31,7 @@ It will run all containers in a single host, then open `http://localhost:8989` i
 
 ![Dashboard](https://raw.githubusercontent.com/TensoRaws/.github/refs/heads/main/finalrip.gif)
 
-We use [this container](https://github.com/TensoRaws/vs-playground) as the base image, which contains FFmpeg, VapourSynth, PyTorch...
+We use [this container](https://github.com/EutropicAI/vs-playground) as the base image, which contains FFmpeg, VapourSynth, PyTorch...
 
 So in the dashboard, we can select a compatible script to process the video!
 
@@ -60,12 +60,12 @@ Special Env Variables:
 
 ### A new script?
 
-In [vs-playground](https://github.com/TensoRaws/vs-playground), we provide the same environment as the encode worker, so you can develop and test your script in the playground.
+In [vs-playground](https://github.com/EutropicAI/vs-playground), we provide the same environment as the encode worker, so you can develop and test your script in the playground.
 
 ### For Advanced User
 
 - API document: [here](https://apifox.com/apidoc/shared-0b6425d8-0140-4822-9f59-f1d6d7784b03)
-- Build your own `encode` image: refer to the [vs-playground](https://github.com/TensoRaws/vs-playground), and set the `Template Repo` name in dashboard if you wanna select a script from the repo's `templates` folder.
+- Build your own `encode` image: refer to the [vs-playground](https://github.com/EutropicAI/vs-playground), and set the `Template Repo` name in dashboard if you wanna select a script from the repo's `templates` folder.
 
 ### Build
 
@@ -85,4 +85,4 @@ make pt
 
 ### License
 
-This project is licensed under the GPL-3.0 license - see the [LICENSE file](https://github.com/TensoRaws/FinalRip/blob/main/LICENSE) for details.
+This project is licensed under the GPL-3.0 license - see the [LICENSE file](https://github.com/EutropicAI/FinalRip/blob/main/LICENSE) for details.
