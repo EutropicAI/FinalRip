@@ -85,4 +85,4 @@ make pt
 
 ### License
 
-This project is licensed under the GPL-3.0 license - see the [LICENSE file](https://github.com/EutropicAI/FinalRip/blob/main/LICENSE) for details.
+This project is licensed under the GPL-3.0 license - see the [LICENSE file](./LICENSE) for details.
