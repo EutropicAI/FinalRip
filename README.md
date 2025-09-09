@@ -19,7 +19,7 @@ _We cut the original video into multiple clips, and then process each clip in pa
 
 ### Quick Deployment
 
-edit [Line 19](https://github.com/EutropicAI/FinalRip/blob/main/deploy/docker-compose/lite/docker-compose.yml#L19) to your LAN IP address
+edit [Line 19](./deploy/docker-compose/lite/docker-compose.yml) to your LAN IP address
 
 ```bash
 docker-compose -f deploy/docker-compose/lite/docker-compose.yml up -d
@@ -73,8 +73,6 @@ In [vs-playground](https://github.com/EutropicAI/vs-playground), we provide the 
 make all
 make pt
 ```
-
-`make pt-rocm` for AMD GPU
 
 ### Reference
 
