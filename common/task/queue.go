@@ -1,6 +1,8 @@
 package task
 
-import "github.com/EutropicAI/FinalRip/module/queue"
+import (
+	"github.com/EutropicAI/FinalRip/module/queue"
+)
 
 // GetEncodeQueueName 获取队列名称，如果没有则返回默认队列（低优先级）
 func GetEncodeQueueName(name *string) string {
