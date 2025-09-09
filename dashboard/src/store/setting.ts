@@ -22,7 +22,7 @@ export const useSettingStore = defineStore(
     // templates
     const vsScriptTemplates: Ref<SelectOption[]> = ref([])
     const ffmpegParamTemplates: Ref<SelectOption[]> = ref([])
-    const templateRepo = ref('TensoRaws/vs-playground')
+    const templateRepo = ref('EutropicAI/vs-playground')
     const githubToken = ref('')
 
     // encode

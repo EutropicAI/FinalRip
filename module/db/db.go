@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/TensoRaws/FinalRip/module/config"
-	"github.com/TensoRaws/FinalRip/module/log"
+	"github.com/EutropicAI/FinalRip/module/config"
+	"github.com/EutropicAI/FinalRip/module/log"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"

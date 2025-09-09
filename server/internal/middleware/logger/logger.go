@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/TensoRaws/FinalRip/module/log"
-	"github.com/TensoRaws/FinalRip/module/util"
+	"github.com/EutropicAI/FinalRip/module/log"
+	"github.com/EutropicAI/FinalRip/module/util"
 	"github.com/gin-gonic/gin"
 )
 

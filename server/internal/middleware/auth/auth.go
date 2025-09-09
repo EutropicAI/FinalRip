@@ -1,8 +1,8 @@
 package auth
 
 import (
-	"github.com/TensoRaws/FinalRip/module/config"
-	"github.com/TensoRaws/FinalRip/module/resp"
+	"github.com/EutropicAI/FinalRip/module/config"
+	"github.com/EutropicAI/FinalRip/module/resp"
 	"github.com/gin-gonic/gin"
 )
 

@@ -8,9 +8,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/TensoRaws/FinalRip/module/config"
-	"github.com/TensoRaws/FinalRip/module/log"
-	"github.com/TensoRaws/FinalRip/module/util"
+	"github.com/EutropicAI/FinalRip/module/config"
+	"github.com/EutropicAI/FinalRip/module/log"
+	"github.com/EutropicAI/FinalRip/module/util"
 	"github.com/minio/minio-go/v7"
 	"github.com/minio/minio-go/v7/pkg/credentials"
 )

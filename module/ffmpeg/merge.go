@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os/exec"
 
-	"github.com/TensoRaws/FinalRip/module/log"
-	"github.com/TensoRaws/FinalRip/module/util"
+	"github.com/EutropicAI/FinalRip/module/log"
+	"github.com/EutropicAI/FinalRip/module/util"
 )
 
 // MergeVideo 使用 ffmpeg 进行视频合并，使用 mkvpropedit 清除 tags

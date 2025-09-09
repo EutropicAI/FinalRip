@@ -3,12 +3,12 @@ package task
 import (
 	"errors"
 
-	"github.com/TensoRaws/FinalRip/common/db"
-	"github.com/TensoRaws/FinalRip/common/task"
-	"github.com/TensoRaws/FinalRip/module/log"
-	"github.com/TensoRaws/FinalRip/module/queue"
-	"github.com/TensoRaws/FinalRip/module/resp"
-	"github.com/TensoRaws/FinalRip/module/util"
+	"github.com/EutropicAI/FinalRip/common/db"
+	"github.com/EutropicAI/FinalRip/common/task"
+	"github.com/EutropicAI/FinalRip/module/log"
+	"github.com/EutropicAI/FinalRip/module/queue"
+	"github.com/EutropicAI/FinalRip/module/resp"
+	"github.com/EutropicAI/FinalRip/module/util"
 	"github.com/bytedance/sonic"
 	"github.com/gin-gonic/gin"
 	"github.com/hibiken/asynq"

@@ -1,12 +1,12 @@
 package cmd
 
 import (
-	"github.com/TensoRaws/FinalRip/module/config"
-	"github.com/TensoRaws/FinalRip/module/db"
-	"github.com/TensoRaws/FinalRip/module/log"
-	"github.com/TensoRaws/FinalRip/module/oss"
-	"github.com/TensoRaws/FinalRip/module/queue"
-	"github.com/TensoRaws/FinalRip/worker/internal/encode"
+	"github.com/EutropicAI/FinalRip/module/config"
+	"github.com/EutropicAI/FinalRip/module/db"
+	"github.com/EutropicAI/FinalRip/module/log"
+	"github.com/EutropicAI/FinalRip/module/oss"
+	"github.com/EutropicAI/FinalRip/module/queue"
+	"github.com/EutropicAI/FinalRip/worker/internal/encode"
 	"github.com/urfave/cli/v2"
 )
 

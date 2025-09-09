@@ -73,7 +73,7 @@ const queueList: Ref<SelectOption[]> = ref([
         <NInput
           v-model:value="templateRepo"
           style="width: 40vh"
-          placeholder="TensoRaws/vs-playground"
+          placeholder="EutropicAI/vs-playground"
         />
       </NSpace>
     </NCard>

@@ -1,11 +1,11 @@
 package v1
 
 import (
-	"github.com/TensoRaws/FinalRip/module/resp"
-	"github.com/TensoRaws/FinalRip/server/internal/middleware/auth"
-	"github.com/TensoRaws/FinalRip/server/internal/middleware/cros"
-	"github.com/TensoRaws/FinalRip/server/internal/middleware/logger"
-	"github.com/TensoRaws/FinalRip/server/internal/service/task"
+	"github.com/EutropicAI/FinalRip/module/resp"
+	"github.com/EutropicAI/FinalRip/server/internal/middleware/auth"
+	"github.com/EutropicAI/FinalRip/server/internal/middleware/cros"
+	"github.com/EutropicAI/FinalRip/server/internal/middleware/logger"
+	"github.com/EutropicAI/FinalRip/server/internal/service/task"
 	"github.com/gin-gonic/gin"
 )
 

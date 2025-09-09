@@ -1,4 +1,4 @@
-module github.com/TensoRaws/FinalRip
+module github.com/EutropicAI/FinalRip
 
 go 1.24.0
 
