@@ -5,7 +5,7 @@ import (
 	"errors"
 	"sort"
 
-	"github.com/TensoRaws/FinalRip/module/db"
+	"github.com/EutropicAI/FinalRip/module/db"
 	"go.mongodb.org/mongo-driver/bson"
 )
 

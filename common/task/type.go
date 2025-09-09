@@ -1,7 +1,7 @@
 package task
 
 import (
-	"github.com/TensoRaws/FinalRip/common/db"
+	"github.com/EutropicAI/FinalRip/common/db"
 )
 
 // task types, note that video: can get video:xxx:xxx format task type

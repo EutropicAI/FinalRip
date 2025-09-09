@@ -4,8 +4,8 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/TensoRaws/FinalRip/common/version"
-	"github.com/TensoRaws/FinalRip/module/config"
+	"github.com/EutropicAI/FinalRip/common/version"
+	"github.com/EutropicAI/FinalRip/module/config"
 	"github.com/hibiken/asynq"
 )
 

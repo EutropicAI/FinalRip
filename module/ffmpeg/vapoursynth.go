@@ -5,9 +5,9 @@ import (
 	"os/exec"
 	"runtime"
 
-	"github.com/TensoRaws/FinalRip/common/constant"
-	"github.com/TensoRaws/FinalRip/module/log"
-	"github.com/TensoRaws/FinalRip/module/util"
+	"github.com/EutropicAI/FinalRip/common/constant"
+	"github.com/EutropicAI/FinalRip/module/log"
+	"github.com/EutropicAI/FinalRip/module/util"
 )
 
 // EncodeVideo 压制视频，压制的 VS 脚本由 encodeScript 指定，压制参数由 encodeParam 指定

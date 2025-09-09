@@ -9,9 +9,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/TensoRaws/FinalRip/module/config"
-	"github.com/TensoRaws/FinalRip/module/log"
-	v1 "github.com/TensoRaws/FinalRip/server/internal/router/api/v1"
+	"github.com/EutropicAI/FinalRip/module/config"
+	"github.com/EutropicAI/FinalRip/module/log"
+	v1 "github.com/EutropicAI/FinalRip/server/internal/router/api/v1"
 	"github.com/gin-gonic/gin"
 )
 

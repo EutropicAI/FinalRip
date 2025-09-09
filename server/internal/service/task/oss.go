@@ -3,9 +3,9 @@ package task
 import (
 	"time"
 
-	"github.com/TensoRaws/FinalRip/module/log"
-	"github.com/TensoRaws/FinalRip/module/oss"
-	"github.com/TensoRaws/FinalRip/module/resp"
+	"github.com/EutropicAI/FinalRip/module/log"
+	"github.com/EutropicAI/FinalRip/module/oss"
+	"github.com/EutropicAI/FinalRip/module/resp"
 	"github.com/gin-gonic/gin"
 )
 

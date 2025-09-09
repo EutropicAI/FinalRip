@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/TensoRaws/FinalRip/module/config"
+	"github.com/EutropicAI/FinalRip/module/config"
 	"github.com/charmbracelet/log"
 )
 

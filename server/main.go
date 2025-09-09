@@ -4,8 +4,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/TensoRaws/FinalRip/common/version"
-	"github.com/TensoRaws/FinalRip/server/cmd"
+	"github.com/EutropicAI/FinalRip/common/version"
+	"github.com/EutropicAI/FinalRip/server/cmd"
 )
 
 func main() {

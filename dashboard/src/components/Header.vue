@@ -14,7 +14,7 @@ const { darkMode } = storeToRefs(useSettingStore())
 
 class openWebsite {
   static async github(): Promise<void> {
-    const githubLink = 'https://github.com/TensoRaws/FinalRip'
+    const githubLink = 'https://github.com/EutropicAI/FinalRip'
 
     window.open(githubLink, '_blank')
   }
