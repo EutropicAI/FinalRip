@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: finalrip-config
+  namespace: finalrip
+  labels:
+    app.kubernetes.io/name: finalrip
+    app.kubernetes.io/component: config
+data:
+  finalrip.yml: |
+    server:
+      token: 114514
+      name: EutropicAI-FinalRip
+      port: 8848
+      mode: prod
+
+    log:
+      level: debug
+      mode:
+        - console
+        - file
+
+    db:
+      type: mongodb
+      host: mongodb
+      port: 27017
+      username: root
+      password: 123456
+      database: finalrip
+      ssl: false
+
+    redis:
+      host: redis
+      port: 6379
+      password: 123456
+      poolSize: 1000
+
+    oss:
+      type: minio # minio, cos
+      endpoint: minio:9000
+      accessKey: homo
+      secretKey: homo114514
+      region: local
+      bucket: finalrip
+      ssl: false
+      hostnameImmutable: true

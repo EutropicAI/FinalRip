@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: finalrip-production
+
+namespace: finalrip
+
+resources:
+- ../../base
+
+patchesStrategicMerge:
+- patches/production-patches.yaml
+
+images:
+- name: lychee0/finalrip:server-dev
+  newTag: latest
+- name: lychee0/finalrip:dashboard-dev
+  newTag: latest
+- name: lychee0/finalrip:worker-cut-dev
+  newTag: latest
+- name: lychee0/finalrip:worker-merge-dev
+  newTag: latest
+- name: lychee0/finalrip:worker-encode-cuda-dev
+  newTag: latest
+
+commonLabels:
+  environment: production
+
+replicas:
+- name: finalrip-server
+  count: 2
+- name: finalrip-worker-encode
+  count: 3

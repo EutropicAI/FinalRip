@@ -1,0 +1,103 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: consul-pvc
+  namespace: finalrip
+  labels:
+    app.kubernetes.io/name: consul
+    app.kubernetes.io/component: config
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consul
+  namespace: finalrip
+  labels:
+    app.kubernetes.io/name: consul
+    app.kubernetes.io/component: config
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: consul
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: consul
+        app.kubernetes.io/component: config
+    spec:
+      containers:
+      - name: consul
+        image: consul:1.15
+        ports:
+        - containerPort: 8500
+          name: ui
+        - containerPort: 8300
+          name: rpc
+        - containerPort: 8301
+          name: serflan
+        - containerPort: 8302
+          name: serfwan
+        command:
+        - consul
+        - agent
+        - -server
+        - -bootstrap
+        - -data-dir
+        - /consul
+        - -ui
+        - -bind
+        - 0.0.0.0
+        - -client
+        - 0.0.0.0
+        volumeMounts:
+        - name: consul-storage
+          mountPath: /consul
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "250m"
+        livenessProbe:
+          httpGet:
+            path: /v1/status/leader
+            port: 8500
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /v1/status/leader
+            port: 8500
+          initialDelaySeconds: 5
+          periodSeconds: 5
+      volumes:
+      - name: consul-storage
+        persistentVolumeClaim:
+          claimName: consul-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: consul
+  namespace: finalrip
+  labels:
+    app.kubernetes.io/name: consul
+    app.kubernetes.io/component: config
+spec:
+  selector:
+    app.kubernetes.io/name: consul
+  ports:
+  - port: 8500
+    targetPort: 8500
+    name: ui
+  - port: 8300
+    targetPort: 8300
+    name: rpc

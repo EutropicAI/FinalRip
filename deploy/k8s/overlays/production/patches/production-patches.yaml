@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finalrip-server
+  namespace: finalrip
+spec:
+  template:
+    spec:
+      containers:
+      - name: server
+        env:
+        - name: FINALRIP_LOG_LEVEL
+          value: "info"
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finalrip-worker-encode
+  namespace: finalrip
+spec:
+  template:
+    spec:
+      containers:
+      - name: worker-encode
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1"
+            nvidia.com/gpu: 1
+          limits:
+            memory: "8Gi"
+            cpu: "4"
+            nvidia.com/gpu: 1
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongodb-pvc
+  namespace: finalrip
+spec:
+  resources:
+    requests:
+      storage: 100Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: minio-pvc
+  namespace: finalrip
+spec:
+  resources:
+    requests:
+      storage: 500Gi
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: finalrip-ingress
+  namespace: finalrip
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  tls:
+  - hosts:
+    - finalrip.yourdomain.com
+    secretName: finalrip-tls
+  rules:
+  - host: finalrip.yourdomain.com

@@ -1,0 +1,291 @@
+# Default values for finalrip.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# Global settings
+global:
+  namespace: finalrip
+  imageRegistry: lychee0
+  
+# Application components
+server:
+  enabled: true
+  replicaCount: 1
+  image:
+    repository: finalrip
+    tag: server-dev
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 8848
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+
+dashboard:
+  enabled: true
+  replicaCount: 1
+  image:
+    repository: finalrip
+    tag: dashboard-dev
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 80
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "100m"
+    limits:
+      memory: "256Mi"
+      cpu: "200m"
+
+workers:
+  cut:
+    enabled: true
+    replicaCount: 1
+    image:
+      repository: finalrip
+      tag: worker-cut-dev
+      pullPolicy: IfNotPresent
+    resources:
+      requests:
+        memory: "512Mi"
+        cpu: "250m"
+      limits:
+        memory: "1Gi"
+        cpu: "500m"
+  
+  merge:
+    enabled: true
+    replicaCount: 1
+    image:
+      repository: finalrip
+      tag: worker-merge-dev
+      pullPolicy: IfNotPresent
+    resources:
+      requests:
+        memory: "512Mi"
+        cpu: "250m"
+      limits:
+        memory: "1Gi"
+        cpu: "500m"
+  
+  encode:
+    enabled: true
+    replicaCount: 1
+    image:
+      repository: finalrip
+      tag: worker-encode-cuda-dev
+      pullPolicy: IfNotPresent
+    resources:
+      requests:
+        memory: "1Gi"
+        cpu: "500m"
+        nvidia.com/gpu: 1
+      limits:
+        memory: "4Gi"
+        cpu: "2"
+        nvidia.com/gpu: 1
+    nodeSelector:
+      accelerator: nvidia-tesla-gpu
+    tolerations:
+    - key: nvidia.com/gpu
+      operator: Exists
+      effect: NoSchedule
+
+# Infrastructure components
+mongodb:
+  enabled: true
+  image:
+    repository: mongo
+    tag: "8.0.0-rc13-jammy"
+    pullPolicy: IfNotPresent
+  persistence:
+    enabled: true
+    storageClass: ""
+    size: 10Gi
+  auth:
+    rootUsername: root
+    rootPassword: 123456
+    database: finalrip
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+
+redis:
+  enabled: true
+  image:
+    repository: redis
+    tag: "7.2.5"
+    pullPolicy: IfNotPresent
+  persistence:
+    enabled: true
+    storageClass: ""
+    size: 5Gi
+  auth:
+    password: 123456
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "250m"
+
+minio:
+  enabled: true
+  image:
+    repository: bitnami/minio
+    tag: "2024.7.13"
+    pullPolicy: IfNotPresent
+  persistence:
+    enabled: true
+    storageClass: ""
+    size: 50Gi
+  auth:
+    rootUser: homo
+    rootPassword: homo114514
+  defaultBuckets: "finalrip:public"
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+
+consul:
+  enabled: true
+  image:
+    repository: consul
+    tag: "1.15"
+    pullPolicy: IfNotPresent
+  persistence:
+    enabled: true
+    storageClass: ""
+    size: 5Gi
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "250m"
+
+asynqmon:
+  enabled: true
+  image:
+    repository: hibiken/asynqmon
+    tag: latest
+    pullPolicy: IfNotPresent
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "50m"
+    limits:
+      memory: "256Mi"
+      cpu: "100m"
+
+# Ingress configuration
+ingress:
+  enabled: false
+  className: "nginx"
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+  - host: finalrip.local
+    paths:
+    - path: /
+      pathType: Prefix
+      service: dashboard
+    - path: /api
+      pathType: Prefix
+      service: server
+    - path: /asynq
+      pathType: Prefix
+      service: asynqmon
+    - path: /minio
+      pathType: Prefix
+      service: minio
+    - path: /consul
+      pathType: Prefix
+      service: consul
+  tls: []
+  #  - secretName: finalrip-tls
+  #    hosts:
+  #      - finalrip.local
+
+# Service configuration
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# Application configuration
+config:
+  finalrip:
+    server:
+      token: 114514
+      name: EutropicAI-FinalRip
+      port: 8848
+      mode: prod
+    log:
+      level: debug
+      mode:
+      - console
+      - file
+    db:
+      type: mongodb
+      host: mongodb
+      port: 27017
+      username: root
+      password: 123456
+      database: finalrip
+      ssl: false
+    redis:
+      host: redis
+      port: 6379
+      password: 123456
+      poolSize: 1000
+    oss:
+      type: minio
+      endpoint: minio:9000
+      accessKey: homo
+      secretKey: homo114514
+      region: local
+      bucket: finalrip
+      ssl: false
+      hostnameImmutable: true

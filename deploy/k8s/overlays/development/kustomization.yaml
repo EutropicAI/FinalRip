@@ -1,0 +1,28 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: finalrip-development
+
+namespace: finalrip
+
+resources:
+- ../../base
+
+patchesStrategicMerge:
+- patches/development-patches.yaml
+
+images:
+- name: lychee0/finalrip:server-dev
+  newTag: dev
+- name: lychee0/finalrip:dashboard-dev
+  newTag: dev
+- name: lychee0/finalrip:worker-cut-dev
+  newTag: dev
+- name: lychee0/finalrip:worker-merge-dev
+  newTag: dev
+- name: lychee0/finalrip:worker-encode-cuda-dev
+  newTag: dev
+
+commonLabels:
+  environment: development
