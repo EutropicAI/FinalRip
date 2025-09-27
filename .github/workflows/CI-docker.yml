@@ -49,7 +49,6 @@ jobs:
             lychee0/finalrip:${{ matrix.dockerfile }}-cuda-dev
           build-args: |
             BASE_CONTAINER_TAG=cuda-dev
-          no-cache: true
 
       - name: Build and push for other services
         if: matrix.dockerfile != 'worker-encode'
@@ -60,4 +59,3 @@ jobs:
           platforms: linux/amd64, linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: lychee0/finalrip:${{ matrix.dockerfile }}-dev
-          no-cache: true
