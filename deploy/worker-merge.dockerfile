@@ -14,10 +14,7 @@ RUN make worker
 FROM debian:bookworm AS app
 
 # prepare environment
-RUN apt update -y && apt upgrade -y
-RUN apt install -y wget
-RUN wget -O /etc/apt/keyrings/gpg-pub-moritzbunkus.gpg https://mkvtoolnix.download/gpg-pub-moritzbunkus.gpg
-RUN apt update -y && apt upgrade -y
+RUN wget -O /etc/apt/keyrings/gpg-pub-moritzbunkus.gpg https://mkvtoolnix.download/gpg-pub-moritzbunkus.gpg && apt update -y && apt upgrade -y
 RUN apt install -y mkvtoolnix
 
 WORKDIR /app
