@@ -42,7 +42,7 @@ jobs:
             lychee0/finalrip:${{ matrix.dockerfile }}-cuda
             lychee0/finalrip:${{ matrix.dockerfile }}-cuda-${{ github.ref_name }}
           build-args: |
-            BASE_CONTAINER_TAG=cuda-v0.3.2
+            BASE_CONTAINER_TAG=cuda-v0.4.0
           no-cache: true
 
       - name: Build and push for other services
