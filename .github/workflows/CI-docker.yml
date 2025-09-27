@@ -27,7 +27,6 @@ jobs:
           remove-android: "true"
           remove-dotnet: "true"
           remove-haskell: "true"
-          remove-codeql: "true"
 
       - name: Checkout
         uses: actions/checkout@v4
