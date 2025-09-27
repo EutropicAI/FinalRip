@@ -46,7 +46,7 @@ all:
 
 .PHONY: pt
 pt:
-	docker buildx build -f ./deploy/worker-encode.dockerfile --build-arg BASE_CONTAINER_TAG=cuda \
+	docker buildx build -f ./deploy/worker-encode.dockerfile --build-arg BASE_CONTAINER_TAG=cuda-dev \
 		-t ${IMAGE_NAME}:worker-encode \
 		-t ${IMAGE_NAME}:worker-encode-dev \
 		-t ${IMAGE_NAME}:worker-encode-cuda-dev \
