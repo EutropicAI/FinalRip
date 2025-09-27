@@ -17,7 +17,7 @@ _We cut the original video into multiple clips, and then process each clip in pa
 - Nvidia GPU and GPU container runtime (optional)
 - make (optional)
 
-### Quick Deployment
+### Quick Start
 
 edit [Line 19](./deploy/docker-compose/lite/docker-compose.yml) to your LAN IP address
 
@@ -26,10 +26,6 @@ docker-compose -f deploy/docker-compose/lite/docker-compose.yml up -d
 ```
 
 It will run all containers in a single host, then open `http://localhost:8989` in your browser to access the dashboard, open `http://localhost:8080` to access the Asynq monitor.
-
-### Start
-
-![Dashboard](https://raw.githubusercontent.com/EutropicAI/.github/refs/heads/main/finalrip.gif)
 
 We use [this container](https://github.com/EutropicAI/vs-playground) as the base image, which contains FFmpeg, VapourSynth, PyTorch...
 
