@@ -52,12 +52,12 @@ jobs:
           build-args: |
             BASE_CONTAINER_TAG=cuda-dev
 
-      - name: Build and push for other services
-        if: matrix.dockerfile != 'worker-encode'
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: ./deploy/${{ matrix.dockerfile }}.dockerfile
-          platforms: linux/amd64, linux/arm64
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: lychee0/finalrip:${{ matrix.dockerfile }}-dev
+#      - name: Build and push for other services
+#        if: matrix.dockerfile != 'worker-encode'
+#        uses: docker/build-push-action@v6
+#        with:
+#          context: .
+#          file: ./deploy/${{ matrix.dockerfile }}.dockerfile
+#          platforms: linux/amd64, linux/arm64
+#          push: ${{ github.event_name != 'pull_request' }}
+#          tags: lychee0/finalrip:${{ matrix.dockerfile }}-dev
